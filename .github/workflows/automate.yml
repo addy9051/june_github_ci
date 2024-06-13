@@ -1,0 +1,26 @@
+name: Run Python Tests
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11.9
+      # You can test your matrix by printing the current Python version
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install dependencies
+        run:
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Running our test cases with Pytest
+        run: pytest
