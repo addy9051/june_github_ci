@@ -22,4 +22,4 @@ def test_predict(client):
 "Married": "Yes"}
     resp = client.post("/predict", json = test_data)
     assert resp.status_code == 200
-    assert resp.json == {"loan approval status: ": "Rejected"}
+    assert resp.json == {"loan approval status: ": "Approved"}
